@@ -5,7 +5,7 @@ import logoImage from "../../assets/imgs/logo.svg";
 export default function Home() {
   return (
     <div className="h-100">
-      <h2 className="text-white font-bold text-center mt-32">
+      <h2 className="text-white font-bold text-center my-8 lg:mt-12">
         Ready for the quiz?
       </h2>
 

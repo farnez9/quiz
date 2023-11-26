@@ -1,0 +1,13 @@
+[
+    {"question": "The square root of 64 is 8.", "answer": true},
+    {"question": "In geometry, a hexagon has 7 sides.", "answer": false},
+    {"question": "Pi (π) is an irrational number.", "answer": true},
+    {"question": "The sum of the angles in a triangle is always 180 degrees.", "answer": true},
+    {"question": "An obtuse angle is greater than 90 degrees.", "answer": true},
+    {"question": "The absolute value of -5 is -5.", "answer": false},
+    {"question": "A prime number is divisible by 1 and itself only.", "answer": true},
+    {"question": "The area of a rectangle is equal to the product of its length and width.", "answer": true},
+    {"question": "The equation 2x + 5 = 10 has a solution x = 2.", "answer": false},
+    {"question": "The circumference of a circle is π times its diameter.", "answer": true}
+  ]
+  

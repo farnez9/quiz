@@ -12,7 +12,7 @@ export default function Subject() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10 lg:px-24">
         {subjects.map((subjects, index) => {
-          return <Card icon={subjects.image} title={subjects.id} key={index} />;
+          return <Card icon={subjects.image} name={subjects.id} key={index} />;
         })}
       </div>
     </main>

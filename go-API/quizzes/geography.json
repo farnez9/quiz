@@ -1,0 +1,13 @@
+[
+    {"question": "The Nile River is the longest river in the world.", "answer": true},
+    {"question": "Mount Everest is the highest mountain in South America.", "answer": false},
+    {"question": "Tokyo is the capital of Japan.", "answer": true},
+    {"question": "The Sahara Desert is located in Asia.", "answer": false},
+    {"question": "The Amazon Rainforest is primarily located in Brazil.", "answer": true},
+    {"question": "Australia is both a country and a continent.", "answer": true},
+    {"question": "The Great Barrier Reef is the largest coral reef system in the world.", "answer": true},
+    {"question": "The Prime Meridian runs through Greenwich, London.", "answer": true},
+    {"question": "The Panama Canal connects the Atlantic Ocean to the Indian Ocean.", "answer": false},
+    {"question": "The city of Istanbul is located in two continents: Europe and Asia.", "answer": true}
+  ]
+  
