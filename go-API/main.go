@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -46,6 +47,12 @@ func getQuestions(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:3000"},
+		AllowMethods:     []string{"POST", "GET"},
+		AllowHeaders:     []string{"Content-Type"},
+		AllowCredentials: true,
+	}))
 	router.GET("/quiz/:subject", getQuestions)
 	router.Run("localhost:8080")
 }

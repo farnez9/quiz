@@ -1,8 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
+/* components */
+import Question from "@/components/Question";
 
 export default function SubjectQuiz({ params }) {
-  const [quizQuestions, setQuizQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [showError, setShowError] = useState(false);
 
   const url = "http://localhost:8080/quiz/" + params.subject;
@@ -11,16 +13,15 @@ export default function SubjectQuiz({ params }) {
     console.log("calling useEffect");
     fetch(url)
       .then((data) => data.json())
-      .then((quiz) => setQuizQuestions(quiz))
+      .then((quiz) => setQuestions(quiz))
       .catch(() => setShowError(true));
-  });
+  }, []);
 
-  // add middleware to bypass CORS policy
   return (
-    <>
-      {quizQuestions.map((quizQuestion, index) => {
-        return <p key={index}>{quizQuestion.question}</p>;
+    <main className="px-8 lg:px-20">
+      {questions.map((q, idx) => {
+        return <Question key={idx} questionText={q.question} />;
       })}
-    </>
+    </main>
   );
 }
