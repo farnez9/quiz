@@ -1,11 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 /* components */
-import Question from "@/components/Question";
+import QuestionCarousel from "@/components/QuestionCarousel";
 
 export default function SubjectQuiz({ params }) {
-  const [questions, setQuestions] = useState([]);
+  const questions = useRef([]);
   const [showError, setShowError] = useState(false);
+  const [questionIdx, setQuestionIdx] = useState(0);
 
   const url = "http://localhost:8080/quiz/" + params.subject;
 
@@ -13,15 +14,26 @@ export default function SubjectQuiz({ params }) {
     console.log("calling useEffect");
     fetch(url)
       .then((data) => data.json())
-      .then((quiz) => setQuestions(quiz))
+      .then((quiz) => {
+        questions.current = quiz;
+      })
       .catch(() => setShowError(true));
   }, []);
 
+  function nextQuestion() {
+    setQuestionIdx((currentIdx) => currentIdx + 1);
+  }
+
+  function previousQuestion() {
+    setQuestionIdx((currentIdx) => currentIdx - 1);
+  }
+
   return (
-    <main className="px-8 lg:px-20">
-      {questions.map((q, idx) => {
-        return <Question key={idx} questionText={q.question} />;
-      })}
-    </main>
+    <QuestionCarousel
+      questions={questions.current}
+      currentIdx={questionIdx}
+      nextQuestion={nextQuestion}
+      previousQuestion={previousQuestion}
+    />
   );
 }
