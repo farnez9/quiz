@@ -4,9 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import QuestionCarousel from "@/components/QuestionCarousel";
 
 export default function SubjectQuiz({ params }) {
-  const questions = useRef([]);
+  const [questions, setQuestions] = useState([]);
   const [showError, setShowError] = useState(false);
-  const [questionIdx, setQuestionIdx] = useState(0);
 
   const url = "http://localhost:8080/quiz/" + params.subject;
 
@@ -14,26 +13,9 @@ export default function SubjectQuiz({ params }) {
     console.log("calling useEffect");
     fetch(url)
       .then((data) => data.json())
-      .then((quiz) => {
-        questions.current = quiz;
-      })
+      .then((quiz) => setQuestions(quiz))
       .catch(() => setShowError(true));
   }, []);
 
-  function nextQuestion() {
-    setQuestionIdx((currentIdx) => currentIdx + 1);
-  }
-
-  function previousQuestion() {
-    setQuestionIdx((currentIdx) => currentIdx - 1);
-  }
-
-  return (
-    <QuestionCarousel
-      questions={questions.current}
-      currentIdx={questionIdx}
-      nextQuestion={nextQuestion}
-      previousQuestion={previousQuestion}
-    />
-  );
+  return <QuestionCarousel questions={questions} />;
 }
