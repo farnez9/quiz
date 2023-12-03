@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "question": "Water boils at 100 degrees Celsius at standard atmospheric pressure",
+    "answer": true
+  },
+  { "id": 2, "question": "The Earth is flat", "answer": false },
+  {
+    "id": 3,
+    "question": "Photosynthesis is the process by which plants convert sunlight into energy",
+    "answer": true
+  },
+  {
+    "id": 4,
+    "question": "Atoms are the smallest unit of matter and cannot be divided further",
+    "answer": false
+  },
+  {
+    "id": 5,
+    "question": "The speed of light is faster than the speed of sound",
+    "answer": true
+  },
+  { "id": 6, "question": "The chemical symbol for gold is Au", "answer": true },
+  {
+    "id": 7,
+    "question": "Gravity is stronger on the Moon compared to Earth",
+    "answer": false
+  },
+  {
+    "id": 8,
+    "question": "DNA stands for Deoxyribonucleic acid",
+    "answer": true
+  },
+  {
+    "id": 9,
+    "question": "The Earth revolves around the Sun in a perfect circle",
+    "answer": false
+  },
+  {
+    "id": 10,
+    "question": "Molecules are made up of two or more atoms",
+    "answer": true
+  }
+]

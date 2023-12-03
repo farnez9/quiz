@@ -1,7 +1,6 @@
+import Card from "@/components/Card";
 /* const */
 import { subjects } from "../../../assets/const/subjects";
-/* component */
-import Card from "@/components/Card";
 
 export default function Subject() {
   return (

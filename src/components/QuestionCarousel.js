@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useState } from "react";
 /* components */
 import Image from "next/image";
 import Link from "next/link";
@@ -8,17 +8,23 @@ import Button from "./Button";
 /* images */
 import leftArrowImg from "../../assets/imgs/arrow-left.svg";
 import leftCircledArrowImg from "../../assets/imgs/arrow-circle-left.svg";
-import rightCircledArrowImg from "../../assets/imgs/arrow-circle-right.svg";
 
-export default function QuestionCarousel({ questions }) {
+export default function QuestionCarousel({ questions, onCheck }) {
   /* current question index */
   const [qIdx, setQIdx] = useState(0);
-  const answers = useRef({});
+  const [answers, setAnswers] = useState([]);
   const questionNum = questions.length;
-  const isLastQuestion = qIdx + 1 === questionNum;
+  const showCheckBtn = answers.length === questionNum;
 
   function answerQuestion(answer) {
-    answers.current[qIdx] = answer;
+    setAnswers((prev) => {
+      const answersCopy = [...prev];
+      answersCopy[qIdx] = {
+        id: qIdx + 1,
+        answer,
+      };
+      return answersCopy;
+    });
     nextQuestion();
   }
 
@@ -56,7 +62,7 @@ export default function QuestionCarousel({ questions }) {
           <Button
             text="true"
             tailwindTextColor="text-white"
-            tailwindBgColor="bg-green-800"
+            tailwindBgColor="bg-emerald-700"
             handleClick={() => answerQuestion(true)}
           />
           <Button
@@ -66,7 +72,22 @@ export default function QuestionCarousel({ questions }) {
             handleClick={() => answerQuestion(false)}
           />
         </div>
-        <div className="mt-20 md:mt-40 flex justify-between items-start">
+        <div className="mt-10 md:mt-40 flex flex-col">
+          {showCheckBtn && (
+            <div className="flex justify-center">
+              <Button
+                text="Check"
+                tailwindTextColor="text-white"
+                tailwindBgColor="bg-blue-500 hover:bg-blue-700"
+                className="w-2/5 align-middle"
+                handleClick={() => {
+                  console.log("answers", answers);
+                  onCheck(answers);
+                }}
+              />
+            </div>
+          )}
+
           <Image
             src={leftCircledArrowImg}
             width={45}
@@ -74,25 +95,6 @@ export default function QuestionCarousel({ questions }) {
             alt="left arrow icon to previous question"
             className=" hover:scale-105 cursor-pointer"
             onClick={() => previousQuestion()}
-          />
-
-          {isLastQuestion && (
-            <Button
-              text="Check"
-              tailwindTextColor="text-white"
-              tailwindBgColor="bg-blue-500 hover:bg-blue-700"
-              className="w-2/5 align-middle"
-              handleClick={() => console.log("check")}
-            />
-          )}
-
-          <Image
-            src={rightCircledArrowImg}
-            width={45}
-            height={45}
-            alt="left arrow icon to previous question"
-            className=" hover:scale-105 cursor-pointer"
-            onClick={() => nextQuestion()}
           />
         </div>
       </div>
